@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:clickable="true"
+    android:background="@color/primaryLightColor"
+    android:layout_margin="5dp"
+    android:outlineSpotShadowColor="@android:color/white"
+    android:outlineAmbientShadowColor="@android:color/white"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:elevation="25dp"
+    app:cardCornerRadius="10dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/memeTitle"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/primaryLightColor"
+            android:ellipsize="end"
+            android:fontFamily="@font/corben"
+            android:gravity="start"
+            android:justificationMode="inter_word"
+            android:maxLines="3"
+            android:padding="5dp"
+            android:text="Meme Title"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="25sp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/memeImage"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"/>
+        <TextView
+            android:id="@+id/upvotes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="15sp"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:padding="5dp"
+            android:justificationMode="inter_word"
+            android:gravity="start"
+            android:background="@color/primaryLightColor"
+            android:textColor="@color/cardview_light_background"
+            android:fontFamily="@font/corben"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:text="Meme Title"/>
+        <TextView
+            android:id="@+id/author"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="15sp"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:padding="5dp"
+            android:justificationMode="inter_word"
+            android:gravity="start"
+            android:background="@color/primaryLightColor"
+            android:textColor="@color/cardview_light_background"
+            android:fontFamily="@font/corben"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:text="Meme Title"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:backgroundTint="@color/primaryLightColor"
+            android:background="@color/primaryLightColor"
+            android:padding="5dp"
+            android:gravity="end|center"
+            android:layout_height="wrap_content">
+
+
+            <ImageButton
+                android:id="@+id/share"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_margin="5dp"
+                android:background="@color/primaryLightColor"
+                android:src="@drawable/ic_baseline_share_24"/>
+            <ImageButton
+                android:id="@+id/download"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_margin="5dp"
+                android:background="@color/primaryLightColor"
+                android:src="@drawable/ic_sharp_save_alt_24"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</androidx.cardview.widget.CardView>
