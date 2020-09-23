@@ -16,11 +16,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -37,10 +39,12 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MemeAdapter extends RecyclerView.Adapter<MemeAdapter.MovieViewholder>{
     private Context context;
     private List<Meme> items;
+    RelativeLayout relativeLayout;
 
-    public MemeAdapter(Context context, List<Meme> items) {
+    public MemeAdapter(Context context, List<Meme> items,RelativeLayout relativeLayout) {
         this.context = context;
         this.items = items;
+        this.relativeLayout = relativeLayout;
     }
 
 
@@ -63,24 +67,38 @@ public class MemeAdapter extends RecyclerView.Adapter<MemeAdapter.MovieViewholde
                 .fitCenter()
                 .into(holder.MemeImage);
         holder.author.setText("Author: "+item.getAuthor());
-        holder.upVotes.setText("UpVotes: "+item.getUps());
+        holder.upVotes.setText(""+item.getUps());
+        holder.share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(holder.checkImageAwailable()){
+                    shareMeme(holder.MemeImage);
+                }else{
+                    Snackbar snackbar = Snackbar
+                            .make(relativeLayout, "Image Not loaded...", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
+            }
+        });
+
         holder.download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
-                    saveImage(holder.MemeImage);
+                    if(holder.checkImageAwailable()){
+                        saveImage(holder.MemeImage);
+                    }else{
+                        Snackbar snackbar = Snackbar
+                                .make(relativeLayout, "Image Not loaded...", Snackbar.LENGTH_LONG);
+                        snackbar.show();
+                    }
+
+
                 } catch (IOException e) {
                     Toast.makeText(context, "Error Occured", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-        holder.share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                shareMeme(holder.MemeImage);
-            }
-        });
-
 
 
     }
@@ -102,11 +120,16 @@ public class MemeAdapter extends RecyclerView.Adapter<MemeAdapter.MovieViewholde
             share = itemView.findViewById(R.id.share);
 
         }
+        public Boolean checkImageAwailable(){
+            if(MemeImage.getDrawable() == null){
+                return false;
+            }
+            return true;
+        }
     }
     public void saveImage(ImageView memeImage) throws IOException {
         GlideBitmapDrawable draw = (GlideBitmapDrawable) memeImage.getDrawable();
         Bitmap bitmap = draw.getBitmap();
-
         FileOutputStream outStream = null;
         File sdCard = Environment.getExternalStorageDirectory();
         File dir = new File(sdCard.getAbsolutePath() + "/Dcim/MemeShare");
@@ -126,7 +149,10 @@ public class MemeAdapter extends RecyclerView.Adapter<MemeAdapter.MovieViewholde
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Toast.makeText(context, "Image Downloaded in "+dir+fileName, Toast.LENGTH_SHORT).show();
+        Snackbar snackbar = Snackbar
+                .make(relativeLayout, "Image Saved in "+dir+fileName, Snackbar.LENGTH_LONG);
+        snackbar.show();
+
 
     }
     private void shareMeme(ImageView memeImage){

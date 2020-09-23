@@ -17,23 +17,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
-
-        <TextView
-            android:id="@+id/memeTitle"
-            style="@style/TextAppearance.AppCompat.Title"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/primaryLightColor"
-            android:ellipsize="end"
-            android:fontFamily="@font/corben"
-            android:gravity="start"
-            android:justificationMode="inter_word"
-            android:maxLines="3"
-            android:padding="5dp"
-            android:text="Meme Title"
-            android:textColor="@color/cardview_light_background"
-            android:textSize="25sp" />
-
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,13 +24,44 @@
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"/>
         <TextView
-            android:id="@+id/upvotes"
+            android:id="@+id/memeTitle"
+            style="@style/TextAppearance.AppCompat.Title"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primaryLightColor"
+            android:fontFamily="@font/corben"
+            android:gravity="start"
+            android:maxLines="3"
+            android:text="Meme Title"
+            android:lineHeight="0.5dp"
+            android:lineSpacingMultiplier="0.7"
+            android:padding="10dp"
+            android:lineSpacingExtra="-4dp"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="25sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:background="@color/primaryLightColor"
+            >
+            <ImageButton
+                android:id="@+id/up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:background="@color/primaryLightColor"
+                android:src="@drawable/ic_baseline_arrow_upward_24"/>
+
+        <TextView
+            android:id="@+id/upvotes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textSize="15sp"
             android:ellipsize="end"
-            android:maxLines="3"
-            android:padding="5dp"
+
+            android:paddingRight="10dp"
             android:justificationMode="inter_word"
             android:gravity="start"
             android:background="@color/primaryLightColor"
@@ -57,12 +71,12 @@
             android:text="Meme Title"/>
         <TextView
             android:id="@+id/author"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textSize="15sp"
-            android:ellipsize="end"
             android:maxLines="3"
-            android:padding="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:justificationMode="inter_word"
             android:gravity="start"
             android:background="@color/primaryLightColor"
@@ -70,7 +84,7 @@
             android:fontFamily="@font/corben"
             style="@style/TextAppearance.AppCompat.Title"
             android:text="Meme Title"/>
-        <LinearLayout
+        </LinearLayout><LinearLayout
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:backgroundTint="@color/primaryLightColor"

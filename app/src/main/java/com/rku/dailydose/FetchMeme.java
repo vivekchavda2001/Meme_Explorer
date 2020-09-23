@@ -18,7 +18,7 @@ public class FetchMeme {
             return memeService;
     }
     public interface Memeservice{
-        @GET("ComedyCemetery/100")
+        @GET("dankmemes/30")
         Call<MemeList> getMemeList();
     }
 

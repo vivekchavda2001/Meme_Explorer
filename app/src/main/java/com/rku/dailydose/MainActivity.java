@@ -14,29 +14,36 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
+    RelativeLayout relativeLayout;
     private static final int WRITE_EXTERNAL_STORAGE_CODE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.N){
-              checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE_CODE);
-        }
+        relativeLayout = findViewById(R.id.mainLay);
+        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.N)
+            checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE_CODE);
         getSupportActionBar().setTitle("Memes Now");
         recyclerView = findViewById(R.id.movieList);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(),1);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 1);
         recyclerView.setLayoutManager(gridLayoutManager);
         getData();
+
     }
 
     @Override
@@ -50,7 +57,9 @@ public class MainActivity extends AppCompatActivity {
             overridePendingTransition(0, 0);
             startActivity(getIntent());
             overridePendingTransition(0, 0);
-            Toast.makeText(this, "Refreshed", Toast.LENGTH_SHORT).show();
+            Snackbar snackbar = Snackbar
+                    .make(relativeLayout, "Refreshed", Snackbar.LENGTH_LONG);
+            snackbar.show();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -62,8 +71,11 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<MemeList> call, Response<MemeList> response) {
                 MemeList list= response.body();
 
-                recyclerView.setAdapter(new MemeAdapter(MainActivity.this,list.getMemes()));
-                Toast.makeText(MainActivity.this, "Sucess", Toast.LENGTH_SHORT).show();
+                recyclerView.setAdapter(new MemeAdapter(MainActivity.this,list.getMemes(),relativeLayout));
+                Snackbar snackbar = Snackbar
+                        .make(relativeLayout, "Memes Loaded", Snackbar.LENGTH_LONG);
+                snackbar.show();
+
             }
 
             @Override
