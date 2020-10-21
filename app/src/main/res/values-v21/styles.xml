@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="abt_icon">
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_width">40dp</item>
+        <item name="android:background">@drawable/dialog_bg</item>
+        <item name="android:elevation">5dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:layout_gravity">top</item>
+
+
+    </style>
+</resources>

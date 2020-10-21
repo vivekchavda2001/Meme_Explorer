@@ -1,4 +1,4 @@
-package com.rku.dailydose;
+package com.encycode.memesexplorer;
 
 import org.junit.Test;
 

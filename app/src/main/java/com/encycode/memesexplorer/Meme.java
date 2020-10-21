@@ -1,5 +1,5 @@
 
-package com.rku.dailydose;
+package com.encycode.memesexplorer;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

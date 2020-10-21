@@ -5,4 +5,8 @@
     android:title="Refresh"
 
     android:id="@+id/refresh" />
+    <item
+        android:title="About Us"
+
+        android:id="@+id/abtus" />
 </menu>

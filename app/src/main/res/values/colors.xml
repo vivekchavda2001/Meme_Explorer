@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#ffffff</color>
     <color name="primaryLightColor">#232b30</color>
+    <color name="dimgray">#222222</color>
+    <color name="dialog_color">#FED8B1</color>
     <!--    <color name="primaryLightColor">#4A5259</color>-->
 
 </resources>

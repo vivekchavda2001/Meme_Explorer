@@ -1,5 +1,5 @@
 
-package com.rku.dailydose;
+package com.encycode.memesexplorer;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;

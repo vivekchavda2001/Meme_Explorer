@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="20dp"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_bg">
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/dialog_bg"
+        android:gravity="center"
+        android:fontFamily="@font/corben"
+        android:text="@string/about"
+        android:elevation="5dp"
+        android:backgroundTint="@color/primaryLightColor"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="30sp"
+        />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+       >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+
+
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:clipToPadding="false"
+                android:gravity="start"
+                android:padding="10dp">
+
+                <ImageView
+                    style="@style/abt_icon"
+                    app:srcCompat="@drawable/ic_baseline_notes_24"
+                    tools:ignore="VectorDrawableCompat" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        style="@style/aboutTextMain"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/note" />
+
+                    <TextView
+                        style="@style/aboutTextsub"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/desc" />
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:clipToPadding="false"
+                android:gravity="start"
+                android:padding="10dp">
+
+                <ImageView
+                    style="@style/abt_icon"
+                    app:srcCompat="@drawable/ic_baseline_business_24"
+                    tools:ignore="VectorDrawableCompat" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TextView
+
+                        style="@style/aboutTextMain"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/org" />
+
+                    <TextView
+                        style="@style/aboutTextsub"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/orgname" />
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:clipToPadding="false"
+                android:gravity="start"
+                android:padding="10dp">
+
+                <ImageView
+                    style="@style/abt_icon"
+                    app:srcCompat="@drawable/ic_baseline_code_24"
+                    tools:ignore="VectorDrawableCompat" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TextView
+
+                        style="@style/aboutTextMain"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/developed" />
+
+                    <TextView
+                        style="@style/aboutTextsub"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/developer" />
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:gravity="start"
+                android:layout_marginTop="10dp"
+
+                android:padding="10dp">
+
+                <ImageView
+
+                    style="@style/abt_icon"
+                    app:srcCompat="@drawable/ic_baseline_email_24"
+                    tools:ignore="VectorDrawableCompat" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/text_email"
+                        style="@style/aboutTextMain"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/headEmail"
+
+                        />
+
+                    <TextView
+                        style="@style/aboutTextsub"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/email" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:clipToPadding="false"
+                android:gravity="start"
+                android:padding="10dp">
+
+                <ImageView
+                    style="@style/abt_icon"
+                    app:srcCompat="@drawable/ic_baseline_play_arrow_24"
+                    tools:ignore="VectorDrawableCompat" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TextView
+
+                        style="@style/aboutTextMain"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/version" />
+
+                    <TextView
+                        style="@style/aboutTextsub"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/n_version" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    </LinearLayout>

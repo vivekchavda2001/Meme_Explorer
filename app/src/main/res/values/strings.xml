@@ -1,4 +1,20 @@
 <resources>
-    <string name="app_name">Memes Now</string>
+    <string name="app_name">Memes Explorer</string>
     <string name="tagline">Whenever I find the key to success, someone changes the lock.</string>
+    <string name="desc">Meme Explorer is Meme Sharing App for sharing Memes.You can also save Memes to your local devices.These are displayed from Reddit.</string>
+    <string name="headEmail">Contact</string>
+    <string name="about">About Us</string>
+    <string name="org">Enterprize</string>
+    <string name="note">About Meme Explorer</string>
+    <string name="version">Version</string>
+    <string name="n_version">1.0</string>
+    <string name="email">vrchavda@encycode.com</string>
+    <string name="orgname">Encycode Solution</string>
+    <string name="developed">Developed By</string>
+    <string name="developer">Vivek Chavda</string>
+    <string name="permission_title">Permission Required</string>
+    <string name="yes">Yes,Grant Permission</string>
+    <string name="cancel">Cancel</string>
+    <string name="permissiondesc">We need storage permission for save Memes to you device, Please grant storage permission.</string>
+
 </resources>

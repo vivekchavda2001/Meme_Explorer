@@ -1,4 +1,4 @@
-package com.rku.dailydose;
+package com.encycode.memesexplorer;
 
 import androidx.appcompat.app.AppCompatActivity;
 

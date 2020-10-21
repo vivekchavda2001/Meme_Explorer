@@ -1,20 +1,15 @@
-package com.rku.dailydose;
+package com.encycode.memesexplorer;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -31,8 +26,6 @@ import java.io.IOException;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -60,6 +53,7 @@ public class MemeAdapter extends RecyclerView.Adapter<MemeAdapter.MovieViewholde
     public void onBindViewHolder(@NonNull final MovieViewholder holder, int position) {
         final Meme item = items.get(position);
         holder.MemeTitle.setText(item.getTitle());
+
         Glide
                 .with(context)
                 .load(item.getUrl())
@@ -74,9 +68,7 @@ public class MemeAdapter extends RecyclerView.Adapter<MemeAdapter.MovieViewholde
                 if(holder.checkImageAwailable()){
                     shareMeme(holder.MemeImage);
                 }else{
-                    Snackbar snackbar = Snackbar
-                            .make(relativeLayout, "Image Not loaded...", Snackbar.LENGTH_LONG);
-                    snackbar.show();
+                    SnackBarCall("Meme Not Loaded Properly");
                 }
             }
         });
@@ -88,14 +80,12 @@ public class MemeAdapter extends RecyclerView.Adapter<MemeAdapter.MovieViewholde
                     if(holder.checkImageAwailable()){
                         saveImage(holder.MemeImage);
                     }else{
-                        Snackbar snackbar = Snackbar
-                                .make(relativeLayout, "Image Not loaded...", Snackbar.LENGTH_LONG);
-                        snackbar.show();
+                        SnackBarCall("Meme Not Loaded Properly");
                     }
 
 
                 } catch (IOException e) {
-                    Toast.makeText(context, "Error Occured", Toast.LENGTH_SHORT).show();
+                    SnackBarCall("Error Occured");
                 }
             }
         });
@@ -128,30 +118,36 @@ public class MemeAdapter extends RecyclerView.Adapter<MemeAdapter.MovieViewholde
         }
     }
     public void saveImage(ImageView memeImage) throws IOException {
-        GlideBitmapDrawable draw = (GlideBitmapDrawable) memeImage.getDrawable();
-        Bitmap bitmap = draw.getBitmap();
-        FileOutputStream outStream = null;
-        File sdCard = Environment.getExternalStorageDirectory();
-        File dir = new File(sdCard.getAbsolutePath() + "/Dcim/MemeShare");
-        dir.mkdirs();
-        String fileName = String.format("%d.jpg", System.currentTimeMillis());
-        File outFile = new File(dir, fileName);
-        try {
-            outStream = new FileOutputStream(outFile);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outStream);
+        //Toast.makeText(context, ""+((MainActivity)context).permissionValidate, Toast.LENGTH_SHORT).show();
 
-        try {
-            outStream.flush();
-            outStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(((MainActivity)context).permissionValidate){
+            GlideBitmapDrawable draw = (GlideBitmapDrawable) memeImage.getDrawable();
+            Bitmap bitmap = draw.getBitmap();
+            FileOutputStream outStream = null;
+            File sdCard = Environment.getExternalStorageDirectory();
+            File dir = new File(sdCard.getAbsolutePath() + "/Dcim/MemeShare");
+            dir.mkdirs();
+            String fileName = String.format("%d.jpg", System.currentTimeMillis());
+            File outFile = new File(dir, fileName);
+            try {
+                outStream = new FileOutputStream(outFile);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outStream);
+
+            try {
+                outStream.flush();
+                outStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            SnackBarCall("Meme Saved in "+dir+"/"+fileName);
+        }else{
+
+            ((MainActivity)context).checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, 1);
         }
-        Snackbar snackbar = Snackbar
-                .make(relativeLayout, "Image Saved in "+dir+fileName, Snackbar.LENGTH_LONG);
-        snackbar.show();
+
 
 
     }
@@ -180,7 +176,18 @@ public class MemeAdapter extends RecyclerView.Adapter<MemeAdapter.MovieViewholde
             e.printStackTrace();
         }
     }
+    private void SnackBarCall(String message){
+        final Snackbar snackbar = Snackbar
+                .make(relativeLayout, ""+message, Snackbar.LENGTH_LONG);
+        snackbar.setAction("Dismiss", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                snackbar.dismiss();
+            }
+        });
+        snackbar.show();
 
+    }
 
 
     }
